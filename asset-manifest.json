@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/dyrtsearch/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/dyrtsearch/static/js/main.d4ede02f.chunk.js",
-    "main.js.map": "/dyrtsearch/static/js/main.d4ede02f.chunk.js.map",
+    "main.js": "/dyrtsearch/static/js/main.2759827c.chunk.js",
+    "main.js.map": "/dyrtsearch/static/js/main.2759827c.chunk.js.map",
     "runtime-main.js": "/dyrtsearch/static/js/runtime-main.da726a7a.js",
     "runtime-main.js.map": "/dyrtsearch/static/js/runtime-main.da726a7a.js.map",
-    "static/js/2.29b7bcb4.chunk.js": "/dyrtsearch/static/js/2.29b7bcb4.chunk.js",
-    "static/js/2.29b7bcb4.chunk.js.map": "/dyrtsearch/static/js/2.29b7bcb4.chunk.js.map",
+    "static/js/2.bf70f7c5.chunk.js": "/dyrtsearch/static/js/2.bf70f7c5.chunk.js",
+    "static/js/2.bf70f7c5.chunk.js.map": "/dyrtsearch/static/js/2.bf70f7c5.chunk.js.map",
     "static/js/3.e5fe3091.chunk.js": "/dyrtsearch/static/js/3.e5fe3091.chunk.js",
     "static/js/3.e5fe3091.chunk.js.map": "/dyrtsearch/static/js/3.e5fe3091.chunk.js.map",
     "index.html": "/dyrtsearch/index.html",
     "static/css/main.6dea0f05.chunk.css.map": "/dyrtsearch/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.29b7bcb4.chunk.js.LICENSE.txt": "/dyrtsearch/static/js/2.29b7bcb4.chunk.js.LICENSE.txt"
+    "static/js/2.bf70f7c5.chunk.js.LICENSE.txt": "/dyrtsearch/static/js/2.bf70f7c5.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.da726a7a.js",
-    "static/js/2.29b7bcb4.chunk.js",
+    "static/js/2.bf70f7c5.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.d4ede02f.chunk.js"
+    "static/js/main.2759827c.chunk.js"
   ]
 }
