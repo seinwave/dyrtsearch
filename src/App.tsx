@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import TypeAheadSearch from "./components/TypeAhead/TypeAheadSearch";
 import { dyrtSearch } from "./utils/dyrt-search";
 import { ErrorBoundary } from "react-error-boundary";
+
 import styled from "styled-components/macro";
 
 const ErrorFallback: FC<{ error: any; resetErrorBoundary: any }> = ({

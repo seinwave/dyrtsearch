@@ -3,9 +3,11 @@ import { debounce } from "../../utils/debounce";
 import { COLORS } from "../../styles/CONSTANTS";
 import Icon from "./Icon";
 import styled from "styled-components/macro";
+import DyrtResult from "./DyrtResult";
 
 interface ResultObject {
   name: string;
+  slug: string;
 }
 
 interface ResultArray extends Array<ResultObject> {}
@@ -18,6 +20,7 @@ const TypeAheadSearch: FC<{
 }> = ({ fetcher, icon, statusCapture, setStatusCapture }) => {
   const [nameString, setNameString] = React.useState("");
   const [results, setResults] = React.useState<ResultArray>([]);
+  const [modal, setModal] = React.useState<object | null>(null);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setNameString(e.target.value);
@@ -26,6 +29,11 @@ const TypeAheadSearch: FC<{
     } else if (e.target.value === "") {
       return setResults([]);
     }
+  }
+
+  function modalSetter(e: React.MouseEvent<HTMLDivElement>, modal: object) {
+    e.preventDefault();
+    return setModal(modal);
   }
 
   function handleSearch() {
@@ -45,6 +53,7 @@ const TypeAheadSearch: FC<{
     throw new Error(`Sorry, something went wrong: ${error}`);
   }
 
+  console.log(modal);
   return (
     <Wrapper>
       <label aria-label="camp-site-search">Find a camp site</label>
@@ -58,12 +67,14 @@ const TypeAheadSearch: FC<{
 
       <ResultsDropDown>
         {results.map((datum: ResultObject) => {
+          const { name } = datum;
           return (
-            <SingleResultWrapper>
+            <SingleResultWrapper onClick={(e) => modalSetter(e, datum)}>
+              {modal ? <DyrtResult result={modal} setModal={setModal} /> : null}
               <ResultIcon>
                 <Icon id={icon} size={24}></Icon>
               </ResultIcon>
-              <SingleResult>{datum.name}</SingleResult>
+              <SingleResult>{name}</SingleResult>
             </SingleResultWrapper>
           );
         })}
