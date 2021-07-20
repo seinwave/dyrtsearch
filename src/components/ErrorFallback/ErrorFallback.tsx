@@ -1,9 +1,9 @@
-export const ErrorFallback = (error: any, resetErrorBoundary: Function) => {
+export const ErrorFallback = (error: any, resetErrorBoundary: any) => {
   return (
     <div role="alert">
       <p>Something went wrong:</p>
       <pre>{error.message}</pre>
-      <button>Try again</button>
+      <button onClick={resetErrorBoundary}>Try again</button>
     </div>
   );
 };
