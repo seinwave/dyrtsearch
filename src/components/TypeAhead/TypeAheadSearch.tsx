@@ -6,11 +6,18 @@ import styled from "styled-components/macro";
 import DyrtResult from "./DyrtResult";
 
 interface ModalObject {
-  _score: number;
-  photoUrl: string;
-  name: string;
-  region_name: string;
+  _score: number | undefined;
+  photoUrl: string | undefined;
+  name: string | undefined;
+  region_name: string | undefined;
 }
+
+const undefinedModalObject = {
+  _score: undefined,
+  photoUrl: undefined,
+  name: undefined,
+  region_name: undefined,
+};
 
 interface ResultArray extends Array<ModalObject> {}
 
@@ -22,7 +29,7 @@ const TypeAheadSearch: FC<{
 }> = ({ fetcher, icon, statusCapture, setStatusCapture }) => {
   const [nameString, setNameString] = React.useState("");
   const [results, setResults] = React.useState<ResultArray>([]);
-  const [modal, setModal] = React.useState<ModalObject | null>(null);
+  const [modal, setModal] = React.useState<ModalObject>(undefinedModalObject);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setNameString(e.target.value);
@@ -74,9 +81,6 @@ const TypeAheadSearch: FC<{
             const { name } = datum;
             return (
               <SingleResultWrapper onClick={(e) => modalSetter(e, datum)}>
-                {modal ? (
-                  <DyrtResult result={modal} setModal={setModal} />
-                ) : null}
                 <ResultIcon>
                   <Icon id={icon} size={24}></Icon>
                 </ResultIcon>
@@ -84,6 +88,9 @@ const TypeAheadSearch: FC<{
               </SingleResultWrapper>
             );
           })}
+          {modal.name ? (
+            <DyrtResult result={modal} setModal={setModal} />
+          ) : null}
         </ResultsDropDownList>
       </ResultsDropDown>
     </Wrapper>
