@@ -55,7 +55,6 @@ export const EMOJIS = {
 };
 
 export const RATINGS = {
-  hate: "🔥💩🔥",
   0: "💩",
   1: "⭐",
   2: "⭐⭐",

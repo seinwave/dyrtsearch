@@ -1,11 +1,22 @@
-import React from "react";
+import React, { FC } from "react";
 import { Dialog } from "@reach/dialog";
 import { RATINGS } from "../../styles/CONSTANTS";
+import styled from "styled-components/macro";
 import VisuallyHidden from "@reach/visually-hidden";
 import "@reach/dialog/styles.css";
 
-export default function DyrtResult({ result, setModal }) {
-  const { _score, name, region_name } = result;
+interface ResultObject {
+  _score: number;
+  photoUrl: string;
+  name: string;
+  region_name: string;
+}
+
+const DyrtResult: FC<{ result: ResultObject; setModal: any }> = ({
+  result,
+  setModal,
+}) => {
+  const { _score, name, region_name, photoUrl } = result;
   const [showDialog, setShowDialog] = React.useState(false);
 
   const close = () => {
@@ -19,6 +30,10 @@ export default function DyrtResult({ result, setModal }) {
     }
   }, [result]);
 
+  const numericalScore: number = Math.round(_score);
+  const typedRatings: { [key: number]: string } = RATINGS;
+  const rating: string = typedRatings[numericalScore];
+
   return (
     <div>
       <div>
@@ -29,11 +44,13 @@ export default function DyrtResult({ result, setModal }) {
             {" "}
             <VisuallyHidden>Close</VisuallyHidden> <span aria-hidden>×</span>{" "}
           </button>{" "}
-          <div>{RATINGS[`${Math.round(_score)}`]}</div>
+          <div>{rating}</div>
           <div>{name}</div>
           <div>{region_name}</div>
         </Dialog>{" "}
       </div>
     </div>
   );
-}
+};
+
+export default DyrtResult;

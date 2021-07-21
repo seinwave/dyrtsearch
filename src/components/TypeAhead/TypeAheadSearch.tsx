@@ -5,12 +5,14 @@ import Icon from "./Icon";
 import styled from "styled-components/macro";
 import DyrtResult from "./DyrtResult";
 
-interface ResultObject {
+interface ModalObject {
+  _score: number;
+  photoUrl: string;
   name: string;
-  slug: string;
+  region_name: string;
 }
 
-interface ResultArray extends Array<ResultObject> {}
+interface ResultArray extends Array<ModalObject> {}
 
 const TypeAheadSearch: FC<{
   fetcher: Function;
@@ -20,7 +22,7 @@ const TypeAheadSearch: FC<{
 }> = ({ fetcher, icon, statusCapture, setStatusCapture }) => {
   const [nameString, setNameString] = React.useState("");
   const [results, setResults] = React.useState<ResultArray>([]);
-  const [modal, setModal] = React.useState<object | null>(null);
+  const [modal, setModal] = React.useState<ModalObject | null>(null);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setNameString(e.target.value);
@@ -31,7 +33,10 @@ const TypeAheadSearch: FC<{
     }
   }
 
-  function modalSetter(e: React.MouseEvent<HTMLDivElement>, modal: object) {
+  function modalSetter(
+    e: React.MouseEvent<HTMLDivElement>,
+    modal: ModalObject
+  ) {
     e.preventDefault();
     return setModal(modal);
   }
@@ -65,7 +70,7 @@ const TypeAheadSearch: FC<{
       </form>
       <ResultsDropDown>
         <ResultsDropDownList>
-          {results.map((datum: ResultObject) => {
+          {results.map((datum: ModalObject) => {
             const { name } = datum;
             return (
               <SingleResultWrapper onClick={(e) => modalSetter(e, datum)}>
