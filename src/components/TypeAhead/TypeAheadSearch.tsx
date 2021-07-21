@@ -53,7 +53,6 @@ const TypeAheadSearch: FC<{
     throw new Error(`Sorry, something went wrong: ${error}`);
   }
 
-  console.log(modal);
   return (
     <Wrapper>
       <label aria-label="camp-site-search">Find a camp site</label>
@@ -64,20 +63,23 @@ const TypeAheadSearch: FC<{
           placeholder={"Moon river"}
         ></SearchInput>
       </form>
-
       <ResultsDropDown>
-        {results.map((datum: ResultObject) => {
-          const { name } = datum;
-          return (
-            <SingleResultWrapper onClick={(e) => modalSetter(e, datum)}>
-              {modal ? <DyrtResult result={modal} setModal={setModal} /> : null}
-              <ResultIcon>
-                <Icon id={icon} size={24}></Icon>
-              </ResultIcon>
-              <SingleResult>{name}</SingleResult>
-            </SingleResultWrapper>
-          );
-        })}
+        <ResultsDropDownList>
+          {results.map((datum: ResultObject) => {
+            const { name } = datum;
+            return (
+              <SingleResultWrapper onClick={(e) => modalSetter(e, datum)}>
+                {modal ? (
+                  <DyrtResult result={modal} setModal={setModal} />
+                ) : null}
+                <ResultIcon>
+                  <Icon id={icon} size={24}></Icon>
+                </ResultIcon>
+                <SingleResult>{name}</SingleResult>
+              </SingleResultWrapper>
+            );
+          })}
+        </ResultsDropDownList>
       </ResultsDropDown>
     </Wrapper>
   );
@@ -98,11 +100,16 @@ const SearchInput = styled.input`
   border-radius: 5px;
 `;
 
-const ResultsDropDown = styled.ul`
+const ResultsDropDown = styled.div`
+  height: 400px;
+  width: 600px;
+  overflow-y: auto;
+  top: 80px;
+  left: -80px;
   position: absolute;
-  top: 60px;
-  left: -48px;
 `;
+
+const ResultsDropDownList = styled.ul``;
 
 const SingleResultWrapper = styled.div`
   width: 400px;

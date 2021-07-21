@@ -43,10 +43,9 @@ function App() {
 export default App;
 
 const Wrapper = styled.div`
-  padding: 300px;
+  padding-top: 200px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-
   align-items: center;
 `;
